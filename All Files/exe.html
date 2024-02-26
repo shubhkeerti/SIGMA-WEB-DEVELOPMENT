@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .exe {
+            display: grid;
+            grid-template-columns: 100px;
+            right: 200px;
+            left: 200px;
+            /* position: absolute; */
+            row-gap: 5px;
+        }
+            /* 
+            .exe{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        } */
+
+
+        .exe .eng {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 20vw;
+        }
+        .file{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            /* width:  ; */
+        }
+        .file a{
+            margin-bottom: 10px;
+        }
+        
+        
+
+        .exe .eng h6 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgba(0, 0, 0, 0.7);
+            font-family: "Segoe UI";
+            padding-top: 0px;
+            margin-top: 0px;
+        }
+
+        .exe .eng .name {
+            color: rgba(0, 0, 0, 0.85);
+            font-family: "Segoe UI";
+        }
+
+        .exe .eng .file {
+            display: flex;
+            gap: 7px;
+            font-size: 12px;
+        }
+
+        .exe .eng1 {
+            background-color: #00b6d1;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            width: 110px;
+            height: 20px;
+            justify-content: center;
+            align-items: center;
+            font-size: 11.5px;
+            border-radius: 8px;
+            padding: 8px 15px;
+            font-weight: bolder;
+
+        }
+
+        .exe .eng2 {
+            background-color: #5cb85c;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            width: 110px;
+            height: 20px;
+            justify-content: center;
+            align-items: center;
+            font-size: 11.5px;
+            border-radius: 8px;
+            padding: 8px 15px;
+            font-weight: bolder;
+        }
+
+        .exe .eng .name .transparent {
+            color: white;
+        }
+
+        /* @media only screen and (max-width: 1200px) {
+            .exe {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media only screen and (max-width: 940px) {
+            .exe {
+                grid-template-columns: 1fr;
+            }
+
+
+        }
+        .file{ */
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="exe">
+        <div class="eng">
+            <div class="name">
+                <h3>English</h3>
+                <h6 class="transparent">English</h6>
+            </div>
+         <div class="col">
+
+             <div class="file"><a href="https://downloads.ultraedit.com/main/ue/win/ue_english.exe" class="eng1">Download
+                 32-bit</a>
+                 <a href="https://downloads.ultraedit.com/main/ue/win/ue_english_64.exe" class="eng2">Download 64-bit</a>
+                </div>   
+            </div>
+        </div>
+        <div class="eng">
+            <div class="name">
+                <h3>Deutsch</h3>
+                <h6>German</h6>
+            </div>
+            <div class="file"><a href="https://downloads.ultraedit.com/main/ue/win/ue_english.exe" class="eng1">Download
+                    32-bit</a>
+                <a href="https://downloads.ultraedit.com/main/ue/win/ue_english_64.exe" class="eng2">Download 64-bit</a>
+            </div>
+        </div>
+        <div class="eng">
+            <div class="name">
+                <h3>Italiano</h3>
+                <h6>Italian</h6>
+            </div>
+            <div class="file"><a href="https://downloads.ultraedit.com/main/ue/win/ue_english.exe" class="eng1">Download
+                    32-bit</a>
+                <a href="https://downloads.ultraedit.com/main/ue/win/ue_english_64.exe" class="eng2">Download 64-bit</a>
+            </div>
+        </div>
+        <div class="eng">
+            <div class="name">
+                <h3>Español</h3>
+                <h6>Spanish</h6>
+            </div>
+            <div class="file"><a href="https://downloads.ultraedit.com/main/ue/win/ue_english.exe" class="eng1">Download
+                    32-bit</a>
+                <a href="https://downloads.ultraedit.com/main/ue/win/ue_english_64.exe" class="eng2">Download 64-bit</a>
+            </div>
+        </div>
+
+        <div class="eng">
+            <div class="name">
+                <h3>français</h3>
+                <h6>French</h6>
+            </div>
+            <div class="file"><a href="https://downloads.ultraedit.com/main/ue/win/ue_english.exe" class="eng1">Download
+                    32-bit</a>
+                <a href="https://downloads.ultraedit.com/main/ue/win/ue_english_64.exe" class="eng2">Download 64-bit</a>
+            </div>
+        </div>
+
+        <div class="eng">
+            <div class="name">
+                <h3>Português brasileiro</h3>
+                <h6>Brazilian Portuguese</h6>
+            </div>
+            <div class="file"><a href="https://downloads.ultraedit.com/main/ue/win/ue_english.exe" class="eng1">Download
+                    32-bit</a>
+                <a href="https://downloads.ultraedit.com/main/ue/win/ue_english_64.exe" class="eng2">Download 64-bit</a>
+            </div>
+        </div>
+        <div class="eng">
+            <div class="name">
+                <h3>日本</h3>
+                <h6>Japanese</h6>
+            </div>
+            <div class="file"><a href="https://downloads.ultraedit.com/main/ue/win/ue_english.exe" class="eng1">Download
+                    32-bit</a>
+                <a href="https://downloads.ultraedit.com/main/ue/win/ue_english_64.exe" class="eng2">Download 64-bit</a>
+            </div>
+        </div>
+        <div class="eng">
+            <div class="name">
+                <h3>한국어/h3>
+                    <h6>Korean</h6>
+            </div>
+            <div class="file"><a href="https://downloads.ultraedit.com/main/ue/win/ue_english.exe" class="eng1">Download
+                    32-bit</a>
+                <a href="https://downloads.ultraedit.com/main/ue/win/ue_english_64.exe" class="eng2">Download 64-bit</a>
+            </div>
+        </div>
+        <div class="eng">
+            <div class="name">
+                <h3>中国</h3>
+                <h6>Chinese</h6>
+            </div>
+            <div class="file"><a href="https://downloads.ultraedit.com/main/ue/win/ue_english.exe" class="eng1">Download
+                    32-bit</a>
+                <a href="https://downloads.ultraedit.com/main/ue/win/ue_english_64.exe" class="eng2">Download 64-bit</a>
+            </div>
+        </div>
+        <div class="eng">
+            <div class="name">
+                <h3>中國</h3>
+                <h6>Traditional Chinese</h6>
+            </div>
+            <div class="file"><a href="https://downloads.ultraedit.com/main/ue/win/ue_english.exe" class="eng1">Download
+                    32-bit</a>
+                <a href="https://downloads.ultraedit.com/main/ue/win/ue_english_64.exe" class="eng2">Download 64-bit</a>
+            </div>
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>

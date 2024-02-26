@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Display Property</title>
+    <style>
+        html {
+            background-color: white;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            border: 2px solid black;
+            display: inline-block;
+            padding: 34px;
+            margin: 44px;
+            width: 222px;
+            color: black;
+            box-shadow: inset -1px -2px 20px 20px rgb(43, 0, 0);
+        }
+
+        .text-shadow {
+            color: red;
+            text-shadow: 10px 5px 3px aqua;
+            outline: 2px solid green;
+            outline-offset: 33px;
+        }
+
+        .box1 {
+            /* display: none; */
+            /* visibility: hidden; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box1">
+        I'm a &lt;div&gt;&lt;/div&gt;
+
+    </div>
+    <!-- <div class="box">
+        i'm also a div
+    </div> -->
+    <p class="text-shadow">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt facere temporibus omnis impedit,
+        molestiae, dolorum nemo harum culpa consequuntur neque labore, at dicta!
+
+    </p>
+</body>
+
+</html>

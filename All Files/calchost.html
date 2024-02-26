@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon"
+        href="https://lh3.googleusercontent.com/pw/AIL4fc_DUr7XAzbcftIpQKejprlIJ-c6Gy28ILQm2ph3hM-9j2-NODcOvLGbtVnBnFJNiSobtY594gTvfxGDoecu8P0al4reLrV412uLvoJytOAB_J0MtNZ-P5VS8rFDmZSXD1iC-cDrFbVpNTVI_QDXH453=w612-h612-s-no?authuser=0"
+        type="image/x-icon">
+    <title>Calculator App by Shubh</title>
+    <style>
+        :root {
+            --bg-color: hsl(222, 26%, 31%);
+            --toggle-background: hsl(223, 31%, 20%);
+            --screen-background: hsl(224, 36%, 15%);
+            --screen-text-color: #fff;
+            --primary-color: #fff;
+            --text-color-1: #fff;
+            --text-color-2: hsl(221, 14%, 31%);
+            --key-background-1: hsl(30, 25%, 89%);
+            --key-background-2: hsl(225, 21%, 49%);
+            --key-background-3: hsl(6, 63%, 50%);
+            --key-shadow-1: hsl(28, 16%, 65%);
+            --key-shadow-2: hsl(224, 28%, 35%);
+            --key-shadow-3: hsl(6, 70%, 34%);
+        }
+
+        /* light */
+        [data-theme="light"] {
+            --bg-color: hsl(0, 0%, 90%);
+            --toggle-background: hsl(0, 5%, 81%);
+            --screen-background: hsl(0, 0%, 93%);
+            --screen-text-color: hsl(60, 10%, 19%);
+            --primary-color: hsl(60, 10%, 19%);
+            --text-color-2: hsl(60, 10%, 19%);
+            --key-background-1: hsl(45, 7%, 89%);
+            --key-background-2: hsl(185, 42%, 37%);
+            --key-background-3: hsl(25, 98%, 40%);
+            --key-shadow-1: hsl(35, 11%, 61%);
+            --key-shadow-2: hsl(185, 58%, 25%);
+            --key-shadow-3: hsl(25, 99%, 27%);
+        }
+
+        /* dark */
+        [data-theme="dark"] {
+            --bg-color: hsl(268, 75%, 9%);
+            --toggle-background: hsl(268, 71%, 12%);
+            --screen-background: hsl(268, 71%, 12%);
+            --screen-text-color: hsl(52, 100%, 62%);
+            --primary-color: hsl(52, 100%, 62%);
+            --text-color-2: hsl(52, 100%, 62%);
+            --key-background-1: hsl(268, 47%, 21%);
+            --key-background-2: hsl(281, 89%, 26%);
+            --key-background-3: hsl(176, 100%, 44%);
+            --key-shadow-1: hsl(290, 70%, 36%);
+            --key-shadow-2: hsl(285, 91%, 52%);
+            --key-shadow-3: hsl(177, 92%, 70%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Spartan", sans-serif;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            background: var(--bg-color);
+            font-size: 1.6rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calc-container {
+            width: min(100%, 375px);
+            padding: 25px 15px;
+            margin: 0 auto;
+        }
+
+        .calc-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .calc-header h1 {
+            color: var(--primary-color);
+            font-size: 2.4rem;
+        }
+
+        .theme {
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .theme-text {
+            color: var(--primary-color);
+            text-transform: uppercase;
+            font-size: 1rem;
+            margin-right: 15px;
+        }
+
+        .theme input {
+            display: none;
+        }
+
+        .theme-switcher {
+            display: flex;
+            justify-content: space-between;
+            width: 6rem;
+            height: 3.4rem;
+            position: relative;
+        }
+
+        .theme-switcher label {
+            flex: none;
+            width: 33.3%;
+            height: 100%;
+            background-color: transparent;
+            color: var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            font-size: 1.3rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .theme-switcher .indicator {
+            display: none;
+            width: 1.2rem;
+            height: 1.2rem;
+            background: var(--key-background-3);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 3px;
+            z-index: 2;
+        }
+
+        .theme-switcher input:checked+.indicator {
+            display: inline-block;
+        }
+
+        .theme .switch-slider {
+            width: 100%;
+            height: 1.8rem;
+            background: var(--toggle-background);
+            border-radius: 10rem;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 97%;
+            margin: 0 auto;
+        }
+
+        /* CALC SCREEN */
+        .screen {
+            margin-top: 20px;
+            background: var(--screen-background);
+            padding: 10px 15px;
+            text-align: right;
+            color: var(--text-color-1);
+            border-radius: 7px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: space-between;
+            min-height: 7rem;
+            /* mencegah tampilan angka supaya tidak overflow */
+            overflow-x: scroll;
+        }
+
+        .screen::-webkit-scrollbar {
+            appearance: none;
+            height: 3px;
+        }
+
+        .screen::-webkit-scrollbar-thumb {
+            background: hsl(0, 5%, 81%);
+            border-radius: 25px;
+        }
+
+        .screen #preview {
+            font-size: 1.2rem;
+            color: var(--screen-text-color);
+        }
+
+        .screen #display {
+            font-size: 2.7rem;
+            color: var(--screen-text-color);
+            width: 100%;
+            white-space: nowrap;
+        }
+
+        /* keypad */
+        .keypad {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--toggle-background);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.8rem;
+            border-radius: 7px;
+        }
+
+        .keypad .key {
+            min-height: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background: var(--key-background-1);
+            color: var(--text-color-2);
+            font-size: 1.6rem;
+            line-height: 1;
+            text-transform: uppercase;
+            box-shadow: inset 0 -2px 0 var(--key-shadow-1);
+        }
+
+        .keypad :is(.delete, .reset) {
+            background: var(--key-background-2);
+            color: var(--text-color-1);
+            font-size: 1.2rem;
+            box-shadow: inset 0 -2px 0 var(--key-shadow-2);
+        }
+
+        .keypad .equal {
+            background: var(--key-background-3);
+            color: var(--text-color-1);
+            box-shadow: inset 0 -2px 0 var(--key-shadow-3);
+        }
+
+        .keypad .key:hover {
+            filter: brightness(130%);
+        }
+
+        .keypad .span-2 {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calc-container">
+        <header class="calc-header">
+            <h1>Shubh</h1>
+            <div class="theme">
+                <span class="theme-text">theme</span>
+                <div class="theme-switcher">
+                    <label for="default">
+                        <small>1</small>
+                        <input type="radio" id="default" name="theme" data-theme="default" value="default" checked />
+                        <span class="indicator"></span>
+                    </label>
+                    <label for="light">
+                        <small>2</small>
+                        <input type="radio" id="light" name="theme" data-theme="light" value="light" />
+                        <span class="indicator"></span>
+                    </label>
+                    <label for="dark">
+                        <small>3</small>
+                        <input type="radio" id="dark" name="theme" data-theme="dark" value="dark" />
+                        <span class="indicator"></span>
+                    </label>
+                    <div class="switch-slider"></div>
+                </div>
+            </div>
+        </header>
+        <!-- screen -->
+        <div class="screen">
+            <p id="preview"></p>
+            <p id="display">0</p>
+        </div>
+        <!-- keypad -->
+        <div class="keypad">
+            <button class="key number" data-key="7">7</button>
+            <button class="key number" data-key="8">8</button>
+            <button class="key number" data-key="9">9</button>
+            <button class="key delete" data-key="delete">Del</button>
+            <button class="key number" data-key="4">4</button>
+            <button class="key number" data-key="5">5</button>
+            <button class="key number" data-key="6">6</button>
+            <button class="key operator" data-key="addition" data-symbol="+">
+                +
+            </button>
+            <button class="key number" data-key="1">1</button>
+            <button class="key number" data-key="2">2</button>
+            <button class="key number" data-key="3">3</button>
+            <button class="key operator" data-key="subtraction" data-symbol="-">
+                -
+            </button>
+            <button class="key decimal" data-key="decimal">.</button>
+            <button class="key number" data-key="0">0</button>
+            <button class="key operator" data-key="division" data-symbol="∕">
+                ∕
+            </button>
+            <button class="key operator" data-key="multiplication" data-symbol="×">
+                ×
+            </button>
+            <button class="key reset span-2" data-key="reset">Reset</button>
+            <button class="key equal span-2" data-key="equal">=</button>
+        </div>
+    </div>
+    <script>
+        const keys = document.querySelectorAll("[data-key]");
+        const display = document.getElementById("display");
+        const preview = document.getElementById("preview");
+        const themeSelects = document.querySelectorAll("[data-theme]");
+        const html = document.documentElement;
+
+        let firstOperand = null;
+        let secondOperand = null;
+        let operator = null;
+
+        keys.forEach((key) =>
+            key.addEventListener("click", () => {
+                const displayValue = display.textContent;
+                // jika keynya number, ambil angkanya & tampilkan ke layar
+                if (key.classList.contains("number")) {
+                    const keyValue = key.dataset.key;
+                    if (displayValue === "0") {
+                        display.textContent = keyValue;
+                    } else {
+                        display.textContent = displayValue + keyValue;
+                    }
+                }
+
+                // jika keynya decimal, tambahkan 1 decimal
+                if (key.classList.contains("decimal")) {
+                    if (!displayValue.includes(".")) {
+                        display.textContent = `${displayValue}.`;
+                    }
+                }
+
+                // jika keynya reset, reset semua
+                if (key.classList.contains("reset")) {
+                    display.textContent = "0";
+                    preview.textContent = "";
+                    firstOperand = null;
+                    secondOperand = null;
+                    operator = null;
+                    hasOperator = false;
+                }
+
+                // jika keynya delete, hapus angkanya satu persatu
+                if (key.classList.contains("delete")) {
+                    const numbers = displayValue.split("").slice(0, -1);
+                    if (numbers.length === 0) {
+                        display.textContent = "0";
+                    } else {
+                        display.textContent = numbers.join("");
+                    }
+                }
+
+                // jika keynya operator, tambahkan 1 operator
+                if (key.classList.contains("operator")) {
+                    if (operator) return;
+                    operator = key.dataset.key;
+                    const operatorSymbol = key.dataset.symbol;
+                    preview.textContent = `${displayValue} ${operatorSymbol}`;
+                    display.textContent = "0";
+                    firstOperand = displayValue;
+                }
+
+                // jika keynya equal atau samadengan, maka lakukan perhitungan
+                if (key.classList.contains("equal")) {
+                    firstOperand = parseFloat(firstOperand);
+                    secondOperand = parseFloat(displayValue);
+                    calculate();
+                }
+            })
+        );
+
+        // fungsi untuk melakukan perhitungan berdasarkan tipe operatornya
+        function calculate() {
+            let result = "";
+            switch (operator) {
+                case "addition":
+                    result = firstOperand + secondOperand;
+                    break;
+                case "subtraction":
+                    result = firstOperand - secondOperand;
+                    break;
+                case "division":
+                    result = firstOperand / secondOperand;
+                    break;
+                case "multiplication":
+                    result = firstOperand * secondOperand;
+                    break;
+                default:
+                    return;
+            }
+
+            if (isNaN(result) || result == Infinity) return alert("tidak bisa dibagi!");
+
+            firstOperand = Number.isInteger(result) ? result : result.toFixed(2);
+            display.textContent = firstOperand;
+            preview.textContent = "";
+            operator = null;
+        }
+
+        // Handle switch theme
+        themeSelects.forEach((select) => {
+            select.addEventListener("change", () => {
+                const theme = select.value;
+                html.setAttribute("data-theme", theme);
+                localStorage.setItem("theme-calc", theme);
+            });
+        });
+
+        // get theme preference
+        const getThemePreference = () => {
+            const theme = localStorage.getItem("theme-calc") ?? "default";
+            const toggle = document.querySelector(`input[data-theme=${theme}]`);
+            const media = matchMedia("(prefers-color-scheme: dark)");
+
+            // menyetel / menggunakan theme yg tersimpan di localStorage ke app
+            if (theme) {
+                html.setAttribute("data-theme", theme);
+                toggle.checked = true;
+                return;
+            }
+
+            // menyetel theme ke app sesuai dengan theme sistem device
+            if (media.matches) {
+                html.setAttribute("data-theme", "dark");
+                toggle.checked = true;
+            } else {
+                html.setAttribute("data-theme", theme);
+                toggle.checked = true;
+            }
+        };
+
+        getThemePreference();
+    </script>
+</body>
+
+</html>

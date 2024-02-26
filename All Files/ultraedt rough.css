@@ -1,0 +1,184 @@
+
+@media only screen and (max-width:1200px) {
+    .logo img {
+        width: 170px;
+    }
+
+    nav {
+        gap: 200px;
+    }
+
+    .right ul li span {
+        font-size: 10px;
+    }
+
+    .img h1 {
+        font-size: 48px;
+    }
+
+    .version h2 {
+        font-size: 20px;
+    }
+
+    .btn button h3 {
+        font-size: 15.6;
+    }
+
+    .btn {
+        width: 322.875px;
+        height: 49.1875px;
+    }
+
+    .uelogo {
+        margin-right: 370px;
+        margin-left: 20px;
+    }
+
+
+
+}
+
+@media only screen and (max-width:950px) {
+    .logo img {
+        width: 140px;
+    }
+
+    nav {
+        gap: 100px;
+    }
+
+    .right ul li span {
+        font-size: 10px;
+        padding: 0px;
+
+    }
+
+    .version h2 {
+        font-size: 18px;
+    }
+
+    .img h1 {
+        font-size: 40px;
+    }
+
+    .img img {
+        width: 93px;
+    }
+
+    .btn button h3 {
+        font-size: 14px;
+
+        .uelogo {
+            width: 70vw;
+            margin-right: 340px;
+            margin-left: 40px;
+        }
+
+        .uelogo img {
+            width: 40px;
+        }
+    }
+
+    @media only screen and (max-width:850px) {
+        .uelogo {
+            width: 70vw;
+            margin-right: 280px;
+            margin-left: 60px;
+
+        }
+
+        .uelogo img {
+            width: 38px;
+        }
+    }
+
+    @media only screen and (max-width:750px) {
+        .logo img {
+            width: 125px;
+        }
+
+        nav {
+            gap: 70px;
+        }
+
+        .right ul li {
+            display: none;
+        }
+
+        .img {
+            width: 73vw;
+        }
+
+        .img h1 {
+            font-size: 35px;
+        }
+
+        .btn {
+            width: 250px;
+            height: 35px;
+        }
+
+        .btn button h3 {
+            font-size: 13px;
+        }
+
+        .uelogo {
+            width: 65vw;
+            margin-right: 280px;
+            margin-left: 100px;
+        }
+
+        .uelogo img {
+            width: 35px;
+        }
+
+    }
+
+    @media only screen and (max-width:600px) {
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 110 px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .review {
+            /* width: 20vh; */
+            height: 25vh;
+        }
+
+        .version h2 {
+            font-size: 15px;
+        }
+
+        .btn {
+            width: 180px;
+            height: 28px;
+        }
+
+        .uelogo {
+            width: 65vw;
+            margin-right: 250px;
+            margin-left: 125px;
+        }
+
+        .uelogo img {
+            width: 35px;
+        }
+        }    @media only screen and (max-width: 1200px) {
+            .exe {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+    @media only screen and (max-width: 940px) {
+        .exe {
+            grid-template-columns: 1fr;
+        }
+    }

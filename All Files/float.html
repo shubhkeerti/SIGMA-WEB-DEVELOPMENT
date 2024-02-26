@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors</title>
+    <style>
+        /* .box:first-child{
+    background-color: aqua;
+/* } */
+        /* .box::first-line{
+    color: yellow;
+} */
+        /* .boxes *{
+    color: red;
+} */
+        /* [data-shubh="hi"], .box{
+    color: aqua;
+    padding: 33px;
+    border: 2px dotted black;
+} */
+
+
+        .boxes::before {
+            content: "harry";
+            color: aqua;
+            background-color: black;
+        }
+
+        .boxes::after {
+            content: "Hi";
+            color: deeppink;
+        }
+
+        ::selection {
+            color: aqua;
+            background-color: black;
+        }
+
+        .box::first-letter {
+            background-color: yellow;
+            color: green;
+        }
+
+        input::placeholder {
+            color: darkblue;
+            font-size: 22px;
+        }
+
+        input {
+            font-size: 70px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="boxes">
+        <div data-shubh="hi" class="box">1st</div>
+        <div class="box">Hey I'm a box</div>
+        <div class="box">Hey I'm a box</div>
+    </div>
+    <input type="text" placeholder="Type Your Name">
+</body>
+
+</html>
